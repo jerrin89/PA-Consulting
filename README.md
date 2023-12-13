@@ -3,13 +3,13 @@
 ## Overview
 This repository contains an automated regression testing framework built using Selenium WebDriver and Cucumber for a retail company's website. The framework aims to validate the success of a user journey (e.g., Item – Cart – Checkout) on the website SauceDemo.
 
-### Prerequisites
+## Prerequisites
 Before running the automated tests, make sure you have the following prerequisites installed:
 
 Java Development Kit (JDK)
 Maven
 Git
-#### Getting Started
+## Getting Started
 Clone the repository:
 bash
 Copy code
@@ -24,7 +24,7 @@ Execute the following Maven command to download dependencies and build the proje
 bash
 Copy code
 mvn clean install
-##### Running Tests
+## Running Tests
 To execute the automated tests, use the following Maven command:
 
 bash
@@ -49,12 +49,12 @@ public class TestRunner {
 }
 This configuration will only execute scenarios tagged with @ItemCartCheckout.
 
-### Framework Structure
+## Framework Structure
 src/main/java: Contains utility classes, configuration, and any reusable components.
 src/test/java: Includes step definitions and test runners.
 src/test/resources/features: Holds Gherkin syntax feature files describing test scenarios.
-### Test Data
+## Test Data
 Test data is managed in the src/test/resources/testdata directory. Ensure that test data is updated as needed for accurate test execution.
 
-#### Reporting
+## Reporting
 Test execution results are generated in HTML format and stored in the target/cucumber-reports directory. Open the index.html file in a browser for detailed test results.
