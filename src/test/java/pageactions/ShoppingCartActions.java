@@ -8,13 +8,14 @@ import util.StorageUtils;
 
 import java.util.List;
 
-import static pageactions.ProductListingPageActions.BOLT_T_SHIRT_PRICE;
-import static pageactions.ProductListingPageActions.PRODUCT_NAME;
+import static contants.FrontendConstants.ProductLists.BOLT_T_SHIRT_PRICE;
+import static contants.FrontendConstants.ProductLists.PRODUCT_NAME;
 
 public class ShoppingCartActions extends BaseClass {
 
     public static final By checkOutButtonLocator = By.id("checkout");
     public static final By continueButtonLocator = By.id("continue");
+    public static final String shoppingCart = "//*[@id='header_container']/div/span[contains(text(), 'Your Cart')]";
 
     public static void verifyTheItemDetails() {
         String actualProductName = driver.findElement(By.xpath("//*[@class='cart_item']//a//div")).getText();
@@ -24,11 +25,11 @@ public class ShoppingCartActions extends BaseClass {
     }
 
     public static void verifyUserIsOnShoppingCart() {
-        driver.findElement(By.xpath("//*[@id='header_container']/div/span[contains(text(), 'Your Cart')]"));
+        driver.findElement(By.xpath(shoppingCart));
     }
 
     public static void clickOnCheckOutButton() {
-      interactionsUtils.clickOn(checkOutButtonLocator);
+        interactionsUtils.clickOn(checkOutButtonLocator);
     }
 
     public static void iFillTheDetailsAnClickContinue(DataTable dataTable) {

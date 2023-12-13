@@ -22,14 +22,5 @@ public class StorageUtils {
             throw new IllegalArgumentException("Key not found: " + key);
         }
     }
-
-    public boolean containsKey(Object key) {
-        return store.containsKey(key);
-    }
-
-    public void clear() {
-        store.clear();
-        System.out.println("Cleared the key-value store");
-    }
 }
 
