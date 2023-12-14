@@ -19,17 +19,30 @@ public class Driver {
     }
 
     private static WebDriver initializeDriver(BrowserType browserType) {
-        WebDriverManager manager = browserType == BrowserType.CHROME ? WebDriverManager.chromedriver() : WebDriverManager.firefoxdriver();
-        manager.setup();
+        WebDriver driver;
 
-        WebDriver driver = browserType == BrowserType.CHROME ? new ChromeDriver() : new FirefoxDriver(new FirefoxOptions());
+        switch (browserType) {
+            case CHROME:
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
+            case FIREFOX:
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver(new FirefoxOptions());
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported browser type: " + browserType);
+        }
 
         // Maximize the browser window
         driver.manage().window().maximize();
 
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> driver.quit(), "Driver shutdown thread"));
+        // Add a shutdown hook to quit the driver when the JVM exits
+        Runtime.getRuntime().addShutdownHook(new Thread(driver::quit, "Driver shutdown thread"));
 
+        // Set the driver in the ThreadLocal for later use
         driverThreadLocal.set(driver);
+
         return driver;
     }
 
