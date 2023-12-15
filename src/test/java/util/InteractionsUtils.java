@@ -7,12 +7,12 @@ import static util.BaseClass.driver;
 
 public class InteractionsUtils {
 
-    public static void sendKeys(By locator, String text) {
+    public void sendKeys(By locator, String text) {
         WebElement element = driver.findElement(locator);
         element.clear();
         element.sendKeys(text);
     }
-    public static void clickOn(By locator) {
+    public void clickOn(By locator) {
         driver.findElement(locator).click();
     }
 
